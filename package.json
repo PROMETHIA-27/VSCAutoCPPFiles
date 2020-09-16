@@ -3,6 +3,7 @@
 	"displayName": "AutoCPPFiles",
 	"publisher": "Promethia",
 	"description": "Automatically generates a .h and .cpp file for use in c++",
+	"repository": "https://github.com/PrinceHackerman27/VSCAutoCPPFiles.git",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.49.0"

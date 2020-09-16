@@ -4,10 +4,6 @@ import * as vscode from 'vscode';
 import * as path from 'path';
 import * as fs from 'fs';
 
-function log(input: string) {
-	vscode.window.showInformationMessage(input);
-}
-
 function getWorkingPathDir(context: any, activeTextEditor: vscode.TextEditor | undefined, activeWorkspace: typeof vscode.workspace) {
 	if (context instanceof vscode.Uri) {
 		const fsPath = context.fsPath;
@@ -21,18 +17,14 @@ function getWorkingPathDir(context: any, activeTextEditor: vscode.TextEditor | u
 }
 
 async function createNew(context: any) {
-	try {
-		const pathdir = getWorkingPathDir(context, vscode.window.activeTextEditor, vscode.workspace);
+	const pathdir = getWorkingPathDir(context, vscode.window.activeTextEditor, vscode.workspace);
 
-		let fileNames: string | undefined = await vscode.window.showInputBox({prompt: "Input file name"});
-		
-		if (fileNames == undefined) { fileNames = ""; }
+	let fileNames: string | undefined = await vscode.window.showInputBox({prompt: "Input file name"});
+	
+	if (fileNames == undefined) { fileNames = ""; }
 
-		fs.writeFileSync(pathdir + "/" + fileNames + ".h", "#pragma once");
-		fs.writeFileSync(pathdir + "/" + fileNames + ".cpp", "");
-	} catch (err) {
-		log(err.message);
-	}
+	fs.writeFileSync(pathdir + "/" + fileNames + ".h", "#pragma once");
+	fs.writeFileSync(pathdir + "/" + fileNames + ".cpp", "");
 }
 
 export function activate(context: any) {
