@@ -24,7 +24,7 @@ async function createNew(context: any) {
 	if (fileNames == undefined) { fileNames = ""; }
 
 	fs.writeFileSync(pathdir + "/" + fileNames + ".h", "#pragma once");
-	fs.writeFileSync(pathdir + "/" + fileNames + ".cpp", "");
+	fs.writeFileSync(pathdir + "/" + fileNames + ".cpp", "#include \"" + fileNames + ".h\"");
 }
 
 export function activate(context: any) {
